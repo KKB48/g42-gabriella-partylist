@@ -2391,6 +2391,13 @@ input, select, textarea {
 					margin-left: auto !important;
 					margin-right: auto !important;
 				}
+		
+				.box.style3 {
+					max-width: 35em;
+					margin-left: auto !important;
+					margin-right: auto !important;
+					
+				}
 
 		/* Wrappers */
 
