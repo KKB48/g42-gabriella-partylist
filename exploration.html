@@ -157,6 +157,60 @@
 					<div class="row">
 						<div class="col-12 col-6-medium col-12-small">
 							<article class="box style3">
+								<h3>Binning Date Features</h3>
+								<p> In order to organize the continuous date and time data, it was divided into either <b>Monthly</b> or <b>Yearly</b> bins or intervals. 
+								<br> For the <b>DatePosted</b> Feature, the datetime data type is converted into periods using the <code>to_period(’m’)</code> function. Hence, the DatePosted feature now contains the month when the tweet was posted. Then, the column was divided into monthly interval bins by using <code>post_bins = pd.period_range(post_start, post_end, freq='M')</code> where <code>post_start</code> is the earliest DatePosted month into the dataset while the <code>post_end</code> is the latest and the <code>freq</code> or frequency is set to <b>‘M’</b> or <b>monthly</b>. Thus, the post_bins contains the binning of the DatePosted feature returned by the period_range function which returns a fixed monthly frequency PeriodIndex.
+								<br>The JoinedDate feature is converted into yearly interval using the `PeriodIndex(df[’Joined’]).year`. Thus, the added temporary feature in the dataset **Temp_YearJoined** now contains the year when the account was created in twitter.</p>
+							</article>
+						</div>
+						
+						<div class="col-12 col-6-medium col-12-small">
+							<article class="box style3">
+								<h3>Interpolation</h3>
+								<p>To aggregate and interpolate the data, we first created an empty df dataset named `df_time_series` in which the features and rows are characterized with:</p>
+								<ul>
+									<li>First feature is the total count of tweets per time bin</li>
+									<li>The succeeding features are each type of content and account separated by each column, and </li>
+									<li>The rows are the indices of the time binning with monthly frequency </li>
+								</ul>
+  								<p>Then, the `count_time_series` function counts the number of tweets for each column depending on the content of the tweet and account type of the user of the tweet. Note that there will be null values in `df_time_series` since the values of the columns in `df_time_series` will only increase if it is encountered in the dataset.
+								<br>Then, we interpolated the `df_time_series` using the interpolate function with <b>linear</b> method. Moreover, in order to remove the leading NaN values in the dataset, we filled the values with 0 using `fillna(0)` method.</p>
+							</article>
+						</div>
+
+					</div>
+				</div>
+			</article>
+							
+		
+		<!-- NLP -->
+			<article id="overview" class="wrapper style3">
+				<div class="container">
+					<header>
+						<h2>Natural Language Processing</h2>
+						<p>In order to obtain a proper analysis of the tweets in our dataset, the removal of stop words, links, mentions, hashtags, and some punctuations in the tweets were performed on the contents of each tweet.
+						<br>These removals are necessary in order to keep the focus on key points of the tweets.</p>
+					</header>
+					<div class="row">
+						<div class="col-12 col-6-medium col-12-small">
+							<article class="box style3">
+								<p>After removing the unnecessary parts of the tweets, we proceed with obtaining the top 10 most frequent words used in the tweets.</p>
+							</article>
+						</div>
+					</div>
+				</div>
+			</article>
+							
+			
+			<!-- Visualization -->
+			<article id="overview" class="wrapper style3">
+				<div class="container">
+					<header>
+						<h2>Time Series Analysis</h2>
+					</header>
+					<div class="row">
+						<div class="col-12 col-6-medium col-12-small">
+							<article class="box style3">
 								<h3>Interpolation</h3>
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 							</article>
