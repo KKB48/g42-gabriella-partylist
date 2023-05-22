@@ -2472,3 +2472,9 @@ input, select, textarea {
 					}
 
 	}
+
+
+.text-justify {
+	text-align: justify;
+  	text-justify: inter-word;
+}
