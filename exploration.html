@@ -106,7 +106,7 @@
 							<section class="box style3">
 								<!-- <span class="icon featured fa-thumbs-up"></span> -->
 								<h3>Transforming Data</h3>
-								<p class="text-justify">Given the three categories of features within the data set (categorical, numerical, and date), we transformed the data within the categories to similar data type in order to remain consistency and ensure uniformity of data types across the dataset. For categorical values, we changed the data into a <b>string (str)</b> datatype while numerical values are transformed into <b>64-bit signed integer</b> data type.  <br>Meanwhile for the data category, the Joined column uses the <code>to_period(’m’)</code> function in order to cast the datetimelike value and cast it to index at a monthly frequency. On the other hand, the DatePosted column will be transformed to use the default datetime format which is <code>YYYY-MM-DD HH:MM:SS</code>.</p>
+								<p class="text-justify">Given the three categories of features within the data set (categorical, numerical, and date), we transformed the data within the categories to similar data type in order to remain consistency and ensure uniformity of data types across the dataset. For categorical values, we changed the data into a <b>string (str)</b> datatype while numerical values are transformed into <b>64-bit signed integer</b> data type.<br> Meanwhile for the data category, the Joined column uses the <code>to_period(’m’)</code> function in order to cast the datetimelike value and cast it to index at a monthly frequency. On the other hand, the DatePosted column will be transformed to use the default datetime format which is <code>YYYY-MM-DD HH:MM:SS</code>.</p>
 							</section>
 						</div>
 						<div class="col-12 col-6-medium col-12-small">
@@ -125,7 +125,7 @@
 									<li>1 for “Rational”, and</li>
 									<li>2 for “Transactional”</li>
 								<ul>
-								<p>and the encoded value is saved as <code>Temp_ContentType</code> feature in the <code>df</code> dataset.</p>
+								<p class="text-justify">and the encoded value is saved as <code>Temp_ContentType</code> feature in the <code>df</code> dataset.</p>
 								<p class="text-justify">For the TweetType, we split the string of the feature to tokenize the content of the column into a list. Then, we mapped the list of tokens of the TweetType column via <i>one hot encoding</i> to see if the tweet contains certain tweet_types (Text, Image, URL, and Reply) by putting a value of 1 to their respective feature under the <code>df</code> dataset.</p>
 							</section>
 						</div>
