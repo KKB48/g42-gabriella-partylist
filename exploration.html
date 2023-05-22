@@ -57,14 +57,15 @@
 						<div class="col-12 col-6-medium col-12-small">
 							<section class="box style3">
 								<!-- <span class="icon featured fa-comments"></span> -->
-								<h3>Handling missing values/ensuring no missing values</h3>
-								<p>What event has triggered the spread of mis/disinformation about the involvement of Gabriela Women's Party with the New People's Army?</p>
+								<h3>Loading Dataset</h3>
+								<p>The data for this project was obtained by scraping tweets on Twitter posted from January 1, 2016 to December 31, 2022 with the keywords <b>"gabriela"</b> and <b>"npa”</b>.</p>
+								
 							</section>
 						</div>
 						<div class="col-12 col-6-medium col-12-small">
 							<section class="box style3">
 								<!-- <span class="icon solid featured fa-camera-retro"></span> -->
-								<h3>Handling outliers</h3>
+								<h3>Cleaning the Data</h3>
 								<p>Mis/disinformation about the association of Gabriela Women's Party with the New People's Army can be correlated with the election of BBM-Sara in the executive branch.</p>
 							</section>
 						</div>
@@ -72,23 +73,77 @@
 							<section class="box style3">
 								<!-- <span class="icon featured fa-thumbs-up"></span> -->
 								<h3>Ensuring formatting consistency</h3>
-								<p>Mis/disinformation about the association of Gabriela Women's Party with the New People's Army cannot be correlated with the election of BBM-Sara in the executive branch.</p>
+								<p>There are currently <i>956 rows</i> in the dataset but only 150 samples to work with for this project. The raw dataset contains <i>34 columns</i> provided by the scraper used in this project. Note that the columns were altered to have no spaces in between the words using the `deleteSpaces` function and the `rename` function. <br> We continue cleaning the dataset by extracting the data from relevant columns</p>
+								<p>Then, we check the dataset if there are any empty rows by checking the tail-end of the dataset using `tail`. In our dataset, we can see that there are indeed empty rows.</p>
+								<p>Since there are empty rows in our dataset, we drop these rows using the `dropna` function.</p>
+								<p>After this, the dataset is left with <i>150 rows and 13 columns</i>, which we were able to determine using the `shape` function. <br> The relevant columns in our dataset are as follows:</p>
+								<ol type="1">
+									<li>**AccountHandle** - username of the account</li>
+									<li>**AccountType** - may only be anonymous, identified, and media</li>
+									<li>**Joined** - date at which the Twitter account was created</li>
+									<li>**Following** - number of users followed by the account</li>
+									<li>**Followers** - number of followers of the account</li>
+									<li>**Tweet** - any message posted to Twitter which may contain photos, videos, links, and text</li>
+									<li>**TweetType** - may be any combination of Text, Image, URL, and Reply</li>
+									<li>**DatePosted** - date at which the tweet was posted which would only be from January 1, 2016 to December 31, 2022</li>
+									<li>**ContentType**: may only be Emotional, Rational, and Transactional</li>
+									<li>**Likes** - number of likes obtained by the tweet</li>
+									<li>**Replies** - number of replies obtained by the tweet</li>
+									<li>**Retweets** -number of retweets obtained by the tweet</li>
+									<li>**QuoteTweets** - number of quote tweets obtained by the tweet</li>
+								</ol>
+ 
+ 								<p>The types of data present from this dataset are the following:</p>
+									
+								<ul>
+									<li>**Categorical (Qualitative)**: AccountHandle, AccountType, Tweet, TweetType, ContentType</li>
+									<li>**Numerical (Quantitative)**: Following, Followers, Likes, Replies, Retweets, QuoteTweets</li>
+									<li>**Date**: DatePosted, Joined</li>
+								</ul>
 							</section>
 						</div>
 						<div class="col-12 col-6-medium col-12-small">
 							<section class="box style3">
 								<!-- <span class="icon featured fa-thumbs-up"></span> -->
-								<h3>Categorical data encoding</h3>
-								<p>Analyze the frequency and posting time of mis/disinformation tweets about the Gabriela Women's Party.</p>
+								<h3>Checking for Missing Values</h3>
+								<p>We checked for columns with either missing, `None`, or `numpy.NaN` values in the data frame columns using the `.isna().any()` function. From here, we can see the columns from the dataset in which we need to handle missing values if there are any. If none, (i.e. the `isna()` function will return nothing) then we proceed with transforming the data. <br>From our dataset, we can see that there are no columns with any missing values.</p>
 							</section>
 						</div>
 						<div class="col-12 col-6-medium col-12-small">
 							<section class="box style3">
 								<!-- <span class="icon featured fa-thumbs-up"></span> -->
-								<h3>Normalization/Standardization/Scaling</h3>
-								<p>Analyze the frequency and posting time of mis/disinformation tweets about the Gabriela Women's Party.</p>
+								<h3>Transforming Data</h3>
+								<p>Given the three categories of features within the data set (categorical, numerical, and date), we transformed the data within the categories to similar data type in order to remain consistency and ensure uniformity of data types across the dataset. For categorical values, we changed the data into a **string (str)** datatype while numerical values are transformed into **64-bit signed integer** data type.  <br>Meanwhile for the data category, the Joined column uses the `to_period(’m’)` function in order to cast the datetimelike value and cast it to index at a monthly frequency. On the other hand, the DatePosted column will be transformed to use the default datetime format which is `YYYY-MM-DD HH:MM:SS`.</p>
 							</section>
 						</div>
+						<div class="col-12 col-6-medium col-12-small">
+							<section class="box style3">
+								<!-- <span class="icon featured fa-thumbs-up"></span> -->
+								<h3>Categorical Encoding</h3>
+								<p>To simplify the categorical features in the dataset, we employ categorical encoding for the AccountType, ContentType, and TweetType features. Thus, we encoded these features into their respective numerical values.<br>For **AccountType**, the encoding was: </p>
+								<ul>
+									<li>0 for “Anonymous”</li>
+									<li>for “Identified”</li>
+									<li>for “Media”</li>
+								</ul>
+								<p>and the encoded value was saved as `Temp_AccountType` feature in the `df` dataset.<br>For **ContentType**, the encoding was:</p>
+								<ul>
+									<li>0 for “Emotional”</li>
+									<li>1 for “Rational”, and</li>
+									<li>2 for “Transactional”</li>
+								<ul>
+								<p>and the encoded value is saved as `Temp_ContentType` feature in the `df` dataset.</p>
+								<p>For the TweetType, we split the string of the feature to tokenize the content of the column into a list. Then, we mapped the list of tokens of the TweetType column via <i>one hot encoding</i> to see if the tweet contains certain tweet_types (Text, Image, URL, and Reply) by putting a value of 1 to their respective feature under the `df` dataset.</p>
+							</section>
+						</div
+						<div class="col-12 col-6-medium col-12-small">
+							<section class="box style3">
+								<!-- <span class="icon featured fa-thumbs-up"></span> -->
+								<h3>Normalization</h3>
+								<p>In order to ensure uniformity in how data looks, reads, and can be utilized for machine learning modeling (ML modeling), we normalized the features with numerical values as described in the `feat_num` of df dataset. We used the `MinMaxScaler()` function of preprocessing module from sklearn to scale the features from the interval <i>[0,1]</i>. We first fit the scaler using the `fit()` function to estimate the minimum and maximum observable values. Then, we normalized the data using the `transform()` function. The normalized data is now stored in **df_scaled**.</p>
+							</section>
+						</div	
+						
 					</div>
 				</div>
 			</article>
