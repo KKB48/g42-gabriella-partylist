@@ -53,41 +53,60 @@
 				<header>
 					<h2>Data Modeling</h2>
 					<p class="text-justify">In order to answer the research question and approve or reject the null hypothesis, we employed time series analysis to understand the relationship between the period of time and the number of tweets before, during and after the recent election period.</p>
+					<br>
+					<p class="text-justify">The statistical model we used is <b>Segmented Linear Regression</b> to compare the trends in data among the time periods. Through this we determine the relationship between the frequency of tweets collected and the time interval. Data was split into three time periods related to the 2022 Philippine National Elections, namely:</p>
+					<ol>
+						<li class="text-justify"><b>pre-election period:</b> before February 8, 2022</li>
+						<li class="text-justify"><b>campaign & election period:</b> February 8 to May 9, 2022</li>
+						<li class="text-justify"><b>post election period:</b> May 10, 2022 onwards</li>
+					</ol>
 				</header>
-				<div class="row">
-					<div class="col-12 col-6-medium col-12-small">
+				<div class="row justify-content-between">
+					<div class="col-6 col-12-medium col-12-small">
 						<article class="box style3">
 							<figure>
+								<h3>Pre-Election Period</h3>
 								<iframe src="assets\graphs_new\9_lr_pre_election.html" scrolling="auto" style="border:none;" seamless="seamless" height="450" width="100%"></iframe>
 								<figcaption>Figure 1: Linear Regression showing the relationship between the days and the tweet count before the Election Period (Pre-Election)
 								</figcaption>
 							</figure>
-
+						</article>
+					</div>
+					<div class="col-6 col-12-medium col-12-small">
+						<article class="box style3">
 							<figure>
+								<h3>Election Period</h3>
 								<iframe src="assets\graphs_new\10_lr_election.html" scrolling="auto" style="border:none;" seamless="seamless" height="450" width="100%"></iframe>
 								<figcaption>Figure 2: Linear Regression showing the relationship between the days and the tweet count during the Election Period
 								</figcaption>
 							</figure>
-
+						</article>
+					</div>
+					<div class="col-6 col-12-medium col-12-small">
+						<article class="box style3">
 							<figure>
+								<h3>Post-Election Period</h3>
 								<iframe src="assets\graphs_new\11_lr_post_election.html" scrolling="auto" style="border:none;" seamless="seamless" height="450" width="100%"></iframe>
 								<figcaption>Figure 3: Linear Regression showing the relationship between the days and the tweet count after the Election Period (Post-Election)
 								</figcaption>
 							</figure>
-
+						</article>
+					</div>
+					<div class="col-12 col-6-medium col-12-small">
+						<article class="box style3">
 							<figure>
 								<iframe src="assets\graphs_new\12_lr_time_vs_tweet.html" scrolling="auto" style="border:none;" seamless="seamless" height="450" width="100%"></iframe>
 								<figcaption>Figure 4: Graph summarizing the relationship between the days and the tweet count over the duration of the three time periods
 							</figure>
-
-
+						</article>
+					</div>
+					<div class="col-12 col-6-medium col-12-small">
+						<article class="box style3">
 							<figure>
 								<iframe src="assets\graphs_new\test graph.html" scrolling="auto" style="border:none;" seamless="seamless" height="450" width="100%"></iframe>
 								<figcaption>Figure 5: Segmented Linear Regression of Figure 4 showing the relevant events during the peaks of the tweet counts
 								</figcaption>
 							</figure>
-							
-
 						</article>
 					</div>
 				</div>
